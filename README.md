@@ -61,6 +61,7 @@ def delete(task_id: int):
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM tasks WHERE id = ?", (task_id,))
+    
     if not cursor.fetchone():
         typer.echo(f"⚠️ No se encontró tarea con ID {task_id}.")
         conn.close()
@@ -75,5 +76,5 @@ def delete(task_id: int):
 # ------------------------------
 # Ejecutar la aplicación
 # ------------------------------
-if __name__ == "_main_":
+if __name__ == "__main__":
     app()
